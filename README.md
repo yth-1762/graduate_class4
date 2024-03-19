@@ -87,6 +87,17 @@ log( ˆπ1/πˆ2) = −13.214+0.122×Orbit.Eccentricity(X2)+31.186×P erihelion.
 - X9가 1단위 증가할 때 소행성군이 Apollo보다 Amor일 오즈는 exp(0.067)
 배와 같다.
 
+# 소행성 잠재 유무 판별 모델링 & 결과 해석
+- 모델을 추정하기 위해 잠재적인 위험이 있으면 1, 없으면 0을 나타내는 새로운 Y변수 생성
+- link function을 logit으로 설정하여 binomial glm model fitting(결과: Residual deviance는 3197.7, AIC는 3215.7 /  Minimum.Orbit.Intersection.Distance(X10), Asteroid.Magnitude(X11) 두 변수가 유의)
+- R 내장 함수인 step function을 사용( AIC를 기준으로 변수 선택) orbit axis, Asteroid.Magnitude(X11),Minimum.Orbit.Intersection.Distance(X10) 변수로 다시 모델 fitting(결과: Null deviance: 11056.0, Residual deviance: 3191.7 on 15606 degrees of freedom, AIC: 3203.4)
+- link function을 probit으로 설정하여 binomial glm model fitting(결과: Null deviance: 11056, Residual deviance: 3183, AIC: 3207)
+- R 내장 함수인 step function을 사용( AIC를 기준으로 변수 선택) Orbit Axis..AU.(X1), Minimum.Orbit.Intersection.Distance..AU.(X10), Asteroid.Magnitude(X11) 변수로 다시 모델 fitting(결과: Null deviance: 11056.0, Residual deviance: 3187.3, AIC: 3195.3) -> deviance와 AIC 측면에서 가장 적합
+- 해석: 1)Orbit.Axis..AU(X1)가 한 단위 증가할 때마다 E(Y∗)는 0.06237만큼 감소한다.
+2)Asteroid.Magnitude(X11)가 한 단위 증가할 때마다 E(Y∗)는 2.33622만큼감소한다.
+3)Minimum.Orbit.Intersection.Distance..AU(X10)가 한 단위 증가할 때마다 E(Y∗)는 6.28228만큼 감소한다. 
+
+
 
 # 기대효과
 - 공유 킥보드 사용자:안전사고 예방, 안전 자가진단
