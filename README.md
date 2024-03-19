@@ -93,14 +93,17 @@ log( ˆπ1/πˆ2) = −13.214+0.122×Orbit.Eccentricity(X2)+31.186×P erihelion.
 - R 내장 함수인 step function을 사용( AIC를 기준으로 변수 선택) orbit axis, Asteroid.Magnitude(X11),Minimum.Orbit.Intersection.Distance(X10) 변수로 다시 모델 fitting(결과: Null deviance: 11056.0, Residual deviance: 3191.7 on 15606 degrees of freedom, AIC: 3203.4)
 - link function을 probit으로 설정하여 binomial glm model fitting(결과: Null deviance: 11056, Residual deviance: 3183, AIC: 3207)
 - R 내장 함수인 step function을 사용( AIC를 기준으로 변수 선택) Orbit Axis..AU.(X1), Minimum.Orbit.Intersection.Distance..AU.(X10), Asteroid.Magnitude(X11) 변수로 다시 모델 fitting(결과: Null deviance: 11056.0, Residual deviance: 3187.3, AIC: 3195.3) -> deviance와 AIC 측면에서 가장 적합
-- 해석: 1)Orbit.Axis..AU(X1)가 한 단위 증가할 때마다 E(Y∗)는 0.06237만큼 감소한다.
-2)Asteroid.Magnitude(X11)가 한 단위 증가할 때마다 E(Y∗)는 2.33622만큼감소한다.
-3)Minimum.Orbit.Intersection.Distance..AU(X10)가 한 단위 증가할 때마다 E(Y∗)는 6.28228만큼 감소한다. 
+- 해석: 1)
+Orbit.Axis..AU(X1)가 한 단위 증가할 때마다 E(Y∗)는 0.06237만큼 감소한다.
+2)
+Asteroid.Magnitude(X11)가 한 단위 증가할 때마다 E(Y∗)는 2.33622만큼감소한다.
+3)
+Minimum.Orbit.Intersection.Distance..AU(X10)가 한 단위 증가할 때마다 E(Y∗)는 6.28228만큼 감소한다. 
 
 
 
 # 기대효과
-- 공유 킥보드 사용자:안전사고 예방, 안전 자가진단
-- 지방자치단체: 시민 보행불편 경감, 민원 처리부담 완화
+- 지구 근처의 소행성들이 어떤 종류의 소행성인지 판별
+- 소행성이 잠재적 충돌 위험이 있는지 판별
 - 공유 킥보드 업체: 공유킥보드 인식 제고, 불법주차 견인비용 절감
 
