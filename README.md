@@ -16,7 +16,7 @@
 
 # 데이터
 - NASA의 Near Earth Object Program의 Jet Propulsion Laboratory(California Institute of Technology) 연구소에서 수집된 데이터이고 총 12개의 변수를 가진 15619개의 데이터
-- 1. Object.Classification (Y ): Orbit classification
+1. Object.Classification (Y ): Orbit classification
 2. Orbit.Axis..AU. (X1): Semi-major axis of the orbit in AU (궤도의 장반축,
 AU)
 3. Orbit.Eccentricity (X2): Eccentricity of the orbit (궤도의 이심률)
