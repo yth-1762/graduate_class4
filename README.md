@@ -46,22 +46,47 @@ NEO and the Earth) (최소 궤도 교차 거리(NEO와 지구의 진동 궤도 �
   
 
 # 데이터 전처리
-- roboflow라는 툴을 활용하여 헬멧 착용&미착용 이미지의 경우 헬멧을 쓴 경우 helmet, 쓰지 않은 경우 head라고 라벨링한 text파일을 생성
-- 전동킥보드 주정차 이미지의 경우 합법으로 주정차 한 경우 legal, 불법으로 주정차 한 경우 illegal이라고 라벨링하여 text파일 생성
+- 모든 수치형 독립변수의 단위의 통일화를 위해 표준화 처리
+- 결측치는 Astroid.Magnitude(X11)변수에서 1개의 자료만 NA값으로 missing 되었는데, 총 15619개의 데이터 중 1개라 크게 영향을 미칠것 같지 않아 이에 대한 데이터는 삭제
 
 # 사용언어/모델
-- R/GLM, VGLM
+- R/GLM
 
 # 모델 성능 지표
-- mAP(mean Average Process)
+- BIC
 
-# parameter
-- batch size: 40
-- epochs: 40
+# 소행성 종류 분류 모델링 & 결과 해석
+- 소행성의 종류를 예측하기 위해 baseline category logit model에 데이터를 적합(결과: Residual deviance는 1509.053, AIC는 1557.053 / Orbit.Eccentricity(X2), Perihelion.Distance..AU.(X7), Orbital.Period..yr.(X9)
+총 3개의 변수가 유의수준 0.05하에서 유의확률 작게 나와 유의한 변수라 봄)
+- ’VGAM’ 패키지 안에 있는’step4vglm’ 함수를 사용하여 변수 선택(AIC 기준)후(변수(X2, X7, X9)와 똑같은 변수가 선택) 다시 모델링 진행(결과: residual deviance는 1507.743, AIC는 1523.743,  Orbit.Eccentricity(X2)와 Perihelion.Distance..AU(X7)가 유의한 변수) -> residual, deviance 기준 더 적합한 모형
+1)
+log( ˆπ1/πˆ3) = 7.288+10.383×Orbit.Eccentricity(X2)+45.119×P erihelion.Distance..AU.(X7)
+− 0.853 × Orbital.P eriod..yr(X9)
+- X2가 1단위 증가할때 소행성군이 Aten보다 Amor일 오즈는 exp(10.383)배
+와 같다.
+- X7가 1단위 증가할 때 소행성군이 Aten보다 Amor일 오즈는 exp(45.119)
+배와 같다.
+- X9가 1단위 증가할 때 소행성군이 Aten보다 Amor일 오즈는 exp(0.835)배와
+같다.
+2)
+log( ˆπ2/πˆ3) = 20.502+10.261×Orbit.Eccentricity(X2)+13.933×P erihelion.Distance..AU.(X7)
+− 0.786 × Orbital.P eriod..yr(X9)
+- X2가 1단위 증가할때 소행성군이 Aten보다 Amor일 오즈는 약 exp(10.261)
+배와 같다.
+- X7가 1단위 증가할 때 소행성군이 Aten보다 Amor일 오즈는 exp(13.933)
+배와 같다.
+- X9가 1단위 증가할 때 소행성군이 Aten보다 Amor일 오즈는 exp(0.786)배와
+같다.
+3)
+log( ˆπ1/πˆ2) = −13.214+0.122×Orbit.Eccentricity(X2)+31.186×P erihelion.Distance..AU.(X7)
+− 0.067 × Orbital.P eriod..y(X9)
+- X2가 1단위 증가할때 소행성군이 Apollo보다 Amor 일 오즈는 exp(0.122)
+배와 같다.
+- X7가 1단위 증가할 때 소행성군이 Apollo보다 Amor일 오즈는 exp(31.186)
+배와 같다.
+- X9가 1단위 증가할 때 소행성군이 Apollo보다 Amor일 오즈는 exp(0.067)
+배와 같다.
 
-# 결과
-- 테스트용 사진으로 결과를 확인한 결과 특정확률로 헬멧 착용, 불법 주정차 여부를 판단함
-- map는 78%, precision,recall은 약 96%의 결과를 보임
 
 # 기대효과
 - 공유 킥보드 사용자:안전사고 예방, 안전 자가진단
