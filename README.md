@@ -53,7 +53,7 @@ NEO and the Earth) (최소 궤도 교차 거리(NEO와 지구의 진동 궤도 �
 - R/GLM
 
 # 모델 성능 지표
-- BIC
+- AIC, deviance
 
 # 소행성 종류 분류 모델링 & 결과 해석
 - 소행성의 종류를 예측하기 위해 baseline category logit model에 데이터를 적합(결과: Residual deviance는 1509.053, AIC는 1557.053 / Orbit.Eccentricity(X2), Perihelion.Distance..AU.(X7), Orbital.Period..yr.(X9)
